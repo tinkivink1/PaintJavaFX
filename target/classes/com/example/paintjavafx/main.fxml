@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+
+<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.paintjavafx.MainController">
+    <center>
+        <Canvas fx:id="canvas" height="500"  width="700" onMouseDragged="#handleCanvasMouseDragged" onMousePressed="#handleCanvasMousePressed" onMouseReleased="#handleCanvasMouseReleased" />
+    </center>
+    <top>
+        <HBox spacing="5">
+            <Label text="Размер"></Label>
+            <TextField fx:id="penSizeTextField" maxWidth="30" prefWidth="30" />
+
+            <Label text="Цвет"></Label>
+            <Rectangle fx:id="blackColor" fill="BLACK" height="25" onMouseClicked="#handleColorRectangleClicked" width="25" />
+            <Rectangle fx:id="whiteColor" fill="WHITE" height="25" onMouseClicked="#handleColorRectangleClicked" width="25" />
+            <Rectangle fx:id="redColor" fill="RED" height="25" onMouseClicked="#handleColorRectangleClicked" width="25" />
+            <Rectangle fx:id="greenColor" fill="GREEN" height="25" onMouseClicked="#handleColorRectangleClicked" width="25" />
+            <Rectangle fx:id="blueColor" fill="BLUE" height="25" onMouseClicked="#handleColorRectangleClicked" width="25" />
+
+            <CheckBox fx:id="freeDrawCheckBox" onAction="#handleFreeDrawCheckBox" text="Свободное рисование" />
+
+            <Label text="Перо"></Label>
+            <ComboBox fx:id="shapeComboBox" onAction="#handleShapeComboBox" promptText="Выбор пера">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="Default" />
+                        <String fx:value="Triangle" />
+                        <String fx:value="Square" />
+                        <String fx:value="Pentagon" />
+                    </FXCollections>
+                </items>
+            </ComboBox>
+            <Button fx:id="clearButton" onAction="#handleClearButtonAction" text="Очистить" />
+        </HBox>
+    </top>
+</BorderPane>
