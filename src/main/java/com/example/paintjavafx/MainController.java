@@ -6,10 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -27,6 +24,8 @@ public class MainController {
     private Color currentColor = Color.BLACK;
     private double currentPenSize = 5;
 
+    @FXML
+    private ColorPicker colorPicker;
 
     @FXML
     private TextField penSizeTextField;
@@ -68,6 +67,13 @@ public class MainController {
                 System.out.println("Size parsing troubles");
             }
         });
+        shapeComboBox.setValue("Default");
+        selectedShape = "Default";
+    }
+
+    @FXML
+    public void handleColorPicker() {
+        currentColor = colorPicker.getValue();
     }
 
     @FXML
@@ -154,12 +160,5 @@ public class MainController {
         gc.clearRect(0,0, canvas.getWidth(), canvas.getHeight());
     }
 
-    public void handleColorRectangleClicked(MouseEvent event) {
-        Rectangle colorRectangle = (Rectangle) event.getSource();
-        Color selectedColor = (Color) colorRectangle.getFill();
-
-        currentColor = selectedColor;
-        System.out.println("Colored rectangle clicked!");
-    }
 
 }
